@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/GreedyAlgorithms.dir/Dijkstra/Dijsktra.cpp.o CMakeFiles/GreedyAlgorithms.dir/FileReader/FileReader.cpp.o CMakeFiles/GreedyAlgorithms.dir/Graph/Graph.cpp.o CMakeFiles/GreedyAlgorithms.dir/Node/Node.cpp.o CMakeFiles/GreedyAlgorithms.dir/main.cpp.o CMakeFiles/GreedyAlgorithms.dir/PRIM/PRIM.cpp.o  -o GreedyAlgorithms 
