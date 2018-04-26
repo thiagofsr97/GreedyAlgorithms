@@ -14,7 +14,7 @@ private:
     std::vector<Node*> nodes;
     int *array;
     int matrixSize;
-    int GetIndex( int u, int v);
+    int GetIndex(int u, int v);
 public:
     Graph(int matrixSize,int arraySize);
     ~Graph();

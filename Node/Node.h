@@ -16,6 +16,7 @@ private:
     bool visited;
     int weight;
     int predecessorId;
+    int rank;
     std::vector<Node*> neighbors;
 public:
     Node(const int& id);
@@ -26,14 +27,12 @@ public:
     bool beenVisited();
     void switchState();
     int getWeight();
+    int getRank();
+    void setRank(int rank);
     void setWeight(int weight);
     void setPredecessorId(int id);
     int getPredecessorId();
     void clearSettings();
-    void clearVisited();
-
-
-    bool operator<(const Node& other);
 };
 
 #endif //GREEDYALGORITHMS_NODE_H

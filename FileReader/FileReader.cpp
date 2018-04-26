@@ -24,12 +24,16 @@ Graph *FileReader::createGraph() {
     int offset = 0;
     int count = 0;
     int currentLine = 0;
-    int j;
+    int j = 0;
     int matrixSize = 0;
     std::string line,numbers;
+
     getline(*inputFile,line);
+
     std::vector<std::string> weights;
+
     matrixSize = std::stoi(line);
+
     for(int i = 0; i < matrixSize;i++){
         offset+=(i+1);
     }
@@ -68,9 +72,6 @@ Graph *FileReader::createGraph() {
           currentLine++;
       }
     }
-
-//    graph->showMatrix();
-//    graph->showNeighbors();
 
     return graph;
 }

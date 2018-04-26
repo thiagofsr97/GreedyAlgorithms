@@ -64,7 +64,11 @@ Graph::Graph(int matrixSize, int arraySize) {
 }
 
 Graph::~Graph() {
+    //dealing with deallocationf of memorys
     delete[] this->array;
+    for(auto node:nodes){
+        delete node;
+    }
 };
 
 

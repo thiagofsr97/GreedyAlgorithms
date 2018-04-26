@@ -1,7 +1,3 @@
-//
-// Created by thiagofsr on 22/04/18.
-//
-
 #include <iostream>
 #include "Node.h"
 
@@ -10,6 +6,7 @@ Node::Node( int const &id) {
     this->visited = false;
     this->weight = INT_MAX; //the algorithms requires this property to be initialized with infinity value
     this->predecessorId = -1;
+    this->rank = 0;
 }
 
 void Node::addNeighbor(Node *node) {
@@ -46,11 +43,9 @@ void Node::setWeight(int weight) {
 void Node::clearSettings() {
     this->weight = INT_MAX;
     this->visited = false;
+    this->rank = 0;
 }
 
-void Node::clearVisited(){
-    this->visited = false;
-}
 void Node::setPredecessorId(int id) {
     this->predecessorId = id;
 
@@ -59,9 +54,13 @@ void Node::setPredecessorId(int id) {
     return this->predecessorId;
 }
 
-bool Node::operator<(const Node &other) {
-    std::cout<< "Oi";
-    return this->weight < other.weight;
+int Node::getRank() {
+    return this->rank;
 }
+
+void Node::setRank(int rank) {
+    this->rank = rank;
+}
+
 
 

@@ -1,13 +1,11 @@
-//
-// Created by thiagofsr on 22/04/18.
-//
-
 #include <queue>
 #include "Dijsktra.h"
 
 
 
 bool compareNode(Node *a, Node* b){
+    if(a->getWeight() == b->getWeight()) // to guarantee a stable sorting process
+        return true;
     return a->getWeight() > b->getWeight();
 
 }
@@ -27,40 +25,32 @@ void Dijsktra::solveProblem() {
 
     Node* currentNode;
 
-    std::vector<Node*> allNodes = graph->getAllNodes();
-    allNodes.front()->setWeight(0);
+
+    graph->getAllNodes().front()->setWeight(0);
+
+    std::priority_queue<Node*,std::vector<Node*>,decltype(&compareNode)> queue(&compareNode);
+
+    queue.push(graph->getAllNodes().front());
 
 
-    Heap<Node*> queue = Heap<Node*>(allNodes.size(),MIN);
-    for(auto node: allNodes){
-        queue.Insert(node);
-    }
+    while(!queue.empty()){
 
+        auto c = queue.top();
+        if(c->getIdentifier() == graph->getAllNodes().back()->getIdentifier())
+            solved = true;
+        queue.pop();
+        c->switchState();
 
+            for (auto v: c->getNeighbors()) {
+                int newWeight = c->getWeight() + graph->getWeigth(c->getIdentifier(), v->getIdentifier());
+                if (!v->beenVisited() && newWeight < v->getWeight()) {
+                    v->setPredecessorId(c->getIdentifier());
+                    v->setWeight(newWeight);
+                    queue.push(v);
 
-    while(currentNode = queue.ExtractTop(nullptr)){
-        if(currentNode == destiny)
-            this->solved = true;
-        if(!currentNode->beenVisited()){
-            std::cout << "Visited: "<< currentNode->getIdentifier() << std::endl;
-                for(auto neighbor:currentNode->getNeighbors()){
-                    if(!neighbor->beenVisited()){
-                        long newWeight =  currentNode->getWeight() + graph->getWeigth(currentNode->getIdentifier(),neighbor->getIdentifier());
-                        if( newWeight < neighbor->getWeight()){
-                            neighbor->setWeight(newWeight);
-                            neighbor->setPredecessorId(currentNode->getIdentifier());
-                            queue.BuildHeapfied();
-                        }
-
-                    }
                 }
-                currentNode->switchState();
-
-
-
-        }
+            }
     }
-
 
 }
 

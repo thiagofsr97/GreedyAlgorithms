@@ -31,14 +31,10 @@ void PRIM::solveProblem() {
     while(!queue.empty()){
         auto current = queue.top();
         queue.pop();
-
-
         current->switchState();
-
         for(auto c: current->getNeighbors()){
             int newWeight = graph->getWeigth(current->getIdentifier(),c->getIdentifier());
             if(!c->beenVisited() && newWeight < c->getWeight()){
-
                 c->setWeight(newWeight);
                 c->setPredecessorId(current->getIdentifier());
                 queue.push(c);

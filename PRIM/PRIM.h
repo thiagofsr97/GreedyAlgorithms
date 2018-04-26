@@ -12,12 +12,10 @@ class PRIM {
 private:
     Graph *graph;
     bool solved;
-    std::vector<Node*> mstTree;
-    long result;
+    int result;
 public:
 
     PRIM(Graph *graph);
-    std::vector<unsigned int> getShortestPath();
     int getResult();
     void solveProblem();
 
